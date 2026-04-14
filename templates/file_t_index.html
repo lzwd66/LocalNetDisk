@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>文件共享</title>
+</head>
+<body>
+    <h1>文件共享</h1>
+    <p>当前目录：<strong>{{ display_path }}</strong></p>
+    {% if parent_dir %}
+        <p><a href="{{ parent_dir }}">⬆ 返回上级</a></p>
+    {% endif %}
+
+    <h2>文件列表</h2>
+    <ul>
+        {% for item in items %}
+            <li>
+                {% if item.is_dir %}
+                    📁 <a href="{{ item.url }}">{{ item.name }}/</a> {% if item.download_url %} <a href="{{ item.download_url }}">[下载ZIP]</a>{% endif %}
+                {% else %}
+                    📄 <a href="{{ item.url }}">{{ item.name }}</a> ({{ item.size_human }}) - {{ item.mtime_str }}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>上传文件到此目录</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="current_path" value="{{ current_path }}">
+        <input type="file" name="file" required>
+        <button type="submit">上传</button>
+    </form>
+
+    <hr>
+    <p>服务器地址：{{ server_ip }}:{{ port }}</p>
+</body>
+</html>

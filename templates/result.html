@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>你的专属大学结果</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', '微软雅黑', sans-serif;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .result-card {
+            background: white;
+            border-radius: 4px;            /* 微圆角，保持锐利 */
+            padding: 50px 40px;
+            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.2); /* 硬阴影 */
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        .emoji-big {
+            font-size: 64px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #111;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 28px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .university-name {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1a1a1a, #4a2a6a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 20px 0;
+            word-break: break-word;
+            text-shadow: 3px 3px 0 rgba(0,0,0,0.05);
+        }
+        .message {
+            color: #222;
+            font-size: 20px;
+            margin: 30px 0 20px;
+            line-height: 1.5;
+            font-weight: 600;
+            border-top: 2px solid #ccc;
+            border-bottom: 2px solid #ccc;
+            padding: 20px 0;
+        }
+        .back-btn {
+            display: inline-block;
+            background: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 0;               /* 直角按钮 */
+            font-weight: 700;
+            transition: 0.1s;
+            box-shadow: 3px 3px 0 #764ba2;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border: 1px solid #333;
+        }
+        .back-btn:hover {
+            background: #2d2d2d;
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 #5a3a7a;
+        }
+        .small-note {
+            margin-top: 25px;
+            color: #888;
+            font-size: 14px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-card">
+        <div class="emoji-big">🏆</div>
+        <h2>检测结果</h2>
+        <div style="font-size: 18px; color: #444; font-weight: 500;">经过精密计算，你命中注定的大学是</div>
+        <div class="university-name">{{ university if university else '（未知学府）' }}</div>
+        <div class="message">
+            ✨ 恭喜！你与 <strong>{{ university }}</strong> 的匹配度高达 {{ match_percent }}% ✨
+        </div>
+        <a href="{{ url_for('test_university') }}" class="back-btn">← 再测一次</a>
+        <div class="small-note">—— 本结果仅供娱乐 ——</div>
+    </div>
+</body>
+</html>
