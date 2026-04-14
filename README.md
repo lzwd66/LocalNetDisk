@@ -12,7 +12,7 @@ An extremely lite Flask web app to help you transfer files in your remote device
 
 - install Python and Flask framework
 ``` bash
-pip install Flask
+pip install flask
 ```
 
 - run this command in where app.py is
