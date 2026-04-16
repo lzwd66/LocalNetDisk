@@ -20,7 +20,12 @@ pip install flask
 python app.py
 ```
 
-- just enjoy~
+- run this command to get your ip
+``` bash
+ipconfig
+```
+
+- Then you can use any device in your LAN, or use other techs to visit the server with the URL '[your ip]:5000'. just enjoy~
 
 ## Advance Usage
 You can modify many parameters in source code.
